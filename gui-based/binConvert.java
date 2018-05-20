@@ -1,3 +1,9 @@
+/**
+ * This class converts from decimal to various other number formats.
+ *
+ * @author Chris Frome
+ * @version 05/2018
+ */
 public class binConvert
 {
     public static String convert(long number, int size, int base)
