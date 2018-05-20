@@ -1,6 +1,6 @@
 # BinConvert
 Binary Conversion Program written in Java
 
-Here is a sample ouptut:
+Here is a sample text based ouptut:
 
-![Binary Sample](BinarySample.png)
+![Binary Sample](text-based/BinarySample.png)
