@@ -1,4 +1,3 @@
-package guiBased;
 /**
  * This program takes a decimal number and converts it to other number formats.
  * 
@@ -30,7 +29,6 @@ public class binConvert
         }
 
         return answer;
-
     }
 
     /**
@@ -42,13 +40,11 @@ public class binConvert
      */
     public static String unsigned(long number)
     {
-
         String answer = "";
 
         answer = convert(number, 31, 2);
 
         return answer;
-
     }
 
     /**
@@ -60,7 +56,6 @@ public class binConvert
      */
     public static String signMag(long number)
     {
-
         String answer = "";
 
         if (number < 0)
@@ -75,7 +70,6 @@ public class binConvert
         }
 
         return answer;
-
     }
 
     /**
@@ -87,7 +81,6 @@ public class binConvert
      */
     public static String onesComp(long number)
     {
-
         String answer = "";
         String unsigned = "";
 
@@ -105,7 +98,6 @@ public class binConvert
             answer = unsigned;
 
         return answer;
-
     }
 
     /**
@@ -117,7 +109,6 @@ public class binConvert
      */
     public static String twosComp(long number)
     {
-
         String answer = "";
         String unsigned = "";
 
@@ -129,7 +120,6 @@ public class binConvert
         if (number < 0)
             for (int count = 0; count < 32; count++)
             {
-
                 if (unsigned.charAt(count) == '0')
                     answer += "1";
                 else
@@ -140,7 +130,6 @@ public class binConvert
             answer = unsigned;
 
         return answer;
-
     }
 
     /**
@@ -152,11 +141,10 @@ public class binConvert
      */
     public static String BCD(long number)
     {
-
         String answer = "";
         String BCDString = "";
         long remainder = 0;
-
+        
         do
         {
             remainder = number % 10;
@@ -167,7 +155,6 @@ public class binConvert
         while (number != 0);
 
         return BCDString;
-
     }
 
     /**
@@ -179,25 +166,19 @@ public class binConvert
      */
     public static String octal(long number)
     {
-
         String answer = "";
         long remainder = 0;
 
         do
         {
-
             remainder = number % 8;
-
             answer = remainder + answer;
-
             number = number / 8;
-
         }
 
         while (number != 0);
 
         return answer;
-
     }
 
     /**
@@ -209,7 +190,6 @@ public class binConvert
      */
     public static String hexadecimal(long number)
     {
-
         String answer = "";
         long remainder = 0;
 
@@ -223,7 +203,6 @@ public class binConvert
         while (number != 0);
 
         return answer;
-
     }
 
     /**
@@ -235,7 +214,6 @@ public class binConvert
      */
     public static String ieeeSingle(double number)
     {
-
         String answer = "";
         String IEEEString = "";
         long mantissa = 0;
@@ -272,7 +250,6 @@ public class binConvert
             answer = "0" + answer;
 
         return answer;
-
     }
 
     /**
@@ -284,7 +261,6 @@ public class binConvert
      */
     public static String ieeeDouble(double number)
     {
-
         String answer = "";
         String IEEEString = "";
         long mantissa = 0;
@@ -300,7 +276,6 @@ public class binConvert
 
             }
             while (Math.abs(number) >= 2.0);
-
         }
         else
         {
@@ -323,7 +298,5 @@ public class binConvert
         else
             answer = "0" + answer;
         return answer;
-
     }
-
 }
