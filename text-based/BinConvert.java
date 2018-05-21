@@ -1,5 +1,3 @@
-package textBased;
-
 import java.util.*;
 
 /**
