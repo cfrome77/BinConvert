@@ -1,29 +1,45 @@
+package guiBased;
 /**
- * This class converts from decimal to various other number formats.
- *
- * @author Chris Frome
+ * This program takes a decimal number and converts it to other number formats.
+ * 
+ * @author kittfrome
  * @version 05/2018
  */
 public class binConvert
 {
+    /**
+     * A helper function for converting a number to a String.
+     * 
+     * @param number
+     *            - the number n=being converted
+     * @param size
+     *            - the of the number
+     * @param base
+     *            - the base being used (i.e. octal or binary)
+     * @return answer - the answer of the conversion
+     */
     public static String convert(long number, int size, int base)
     {
-
         String answer = "";
 
         while (size > -1)
         {
-            answer += (long)(number / Math.pow(base,size));
-            number %= Math.pow(base,size); 
+            answer += (long) (number / Math.pow(base, size));
+            number %= Math.pow(base, size);
             size--;
-            
-        } // end while
+        }
 
         return answer;
 
-    } // end convert
+    }
 
-
+    /**
+     * This function converts to 32 bit unsigned.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String unsigned(long number)
     {
 
@@ -33,9 +49,15 @@ public class binConvert
 
         return answer;
 
-    } // end unsigned
+    }
 
-
+    /**
+     * This method converts to 32 bit signed magnitude.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String signMag(long number)
     {
 
@@ -46,16 +68,23 @@ public class binConvert
             number = -number;
             answer = 1 + convert(number, 30, 2);
         }
-        else 
+        else
         {
             answer = 0 + convert(number, 30, 2);
-            
-        } // end if
+
+        }
 
         return answer;
 
-    } // end signedMag
+    }
 
+    /**
+     * This method converts to 32 bit ones complement.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String onesComp(long number)
     {
 
@@ -64,7 +93,7 @@ public class binConvert
 
         unsigned = convert(Math.abs(number), 31, 2);
 
-        if (number < 0) 
+        if (number < 0)
             for (int count = 0; count < 32; count++)
             {
                 if (unsigned.charAt(count) == '0')
@@ -77,9 +106,15 @@ public class binConvert
 
         return answer;
 
-    } // end onesComp
+    }
 
-
+    /**
+     * This method converts to 32 bit twos complement.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String twosComp(long number)
     {
 
@@ -106,9 +141,15 @@ public class binConvert
 
         return answer;
 
-    } // end twosComp
+    }
 
-
+    /**
+     * This method converts to binary-coded decimal.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String BCD(long number)
     {
 
@@ -127,33 +168,45 @@ public class binConvert
 
         return BCDString;
 
-    } // end BCD
+    }
 
-
+    /**
+     * This method converts to octal.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String octal(long number)
     {
 
-    String answer = "";
-    long remainder = 0;
+        String answer = "";
+        long remainder = 0;
 
-    do
-    {
+        do
+        {
 
-    remainder = number % 8;
+            remainder = number % 8;
 
-    answer = remainder + answer;
+            answer = remainder + answer;
 
-    number = number / 8;
-    
-    } 
+            number = number / 8;
 
-    while (number != 0);
+        }
 
-    return answer;
+        while (number != 0);
 
-    } // end octal
+        return answer;
 
+    }
 
+    /**
+     * This method converts to hexadecimal.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String hexadecimal(long number)
     {
 
@@ -163,16 +216,23 @@ public class binConvert
         do
         {
             remainder = number % 16;
-            answer = (remainder <= 9 && remainder >= 0) ? ((char)('0' + remainder) + answer) : ((char)('A' + (remainder - 10)) + answer);
+            answer = (remainder <= 9 && remainder >= 0) ? ((char) ('0' + remainder) + answer)
+                    : ((char) ('A' + (remainder - 10)) + answer);
             number = number / 16;
-        } 
+        }
         while (number != 0);
 
         return answer;
 
-    } // end hexaDecimal
+    }
 
-
+    /**
+     * This method converts to IEEE single precision.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String ieeeSingle(double number)
     {
 
@@ -180,7 +240,6 @@ public class binConvert
         String IEEEString = "";
         long mantissa = 0;
         long exp = 127;
-
 
         if (Math.abs(number) > 1.0)
         {
@@ -191,17 +250,17 @@ public class binConvert
             }
             while (Math.abs(number) >= 2.0);
         }
-        else 
+        else
         {
             do
             {
                 number *= 2.0;
-                exp --;
+                exp--;
             }
             while (Math.abs(number) < 1.0);
         }
 
-        mantissa = (long)((Math.abs(number) - 1.0) * (Math.pow(2.0, 23.0)));
+        mantissa = (long) ((Math.abs(number) - 1.0) * (Math.pow(2.0, 23.0)));
         IEEEString = convert(mantissa, 22, 2);
         answer = IEEEString;
         IEEEString = convert(exp, 7, 2);
@@ -214,9 +273,15 @@ public class binConvert
 
         return answer;
 
-    } // end ieeeSingle
+    }
 
-
+    /**
+     * This method converts to IEEE double precision.
+     * 
+     * @param number
+     *            - the number being converted
+     * @return answer - the answer of the conversion
+     */
     public static String ieeeDouble(double number)
     {
 
@@ -224,7 +289,6 @@ public class binConvert
         String IEEEString = "";
         long mantissa = 0;
         long exp = 1023;
-
 
         if (Math.abs(number) > 1.0)
         {
@@ -238,17 +302,17 @@ public class binConvert
             while (Math.abs(number) >= 2.0);
 
         }
-        else 
+        else
         {
             do
             {
                 number *= 2.0;
-                exp --;
+                exp--;
             }
             while (Math.abs(number) < 1.0);
         }
 
-        mantissa = (long)((Math.abs(number) - 1.0) * (Math.pow(2.0, 52.0)));
+        mantissa = (long) ((Math.abs(number) - 1.0) * (Math.pow(2.0, 52.0)));
         IEEEString = convert(mantissa, 51, 2);
         answer = IEEEString;
         IEEEString = convert(exp, 9, 2);
@@ -260,6 +324,6 @@ public class binConvert
             answer = "0" + answer;
         return answer;
 
-    } // end ieeeDouble
+    }
 
-} // end Unsigned
+}
