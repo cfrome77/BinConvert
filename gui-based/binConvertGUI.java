@@ -70,51 +70,59 @@ public class binConvertGUI extends JPanel
             // pressed
             public void actionPerformed(ActionEvent ae)
             {
-                String value = numberField.getText();
-                if (cb.getSelectedItem().equals("32 bit unsigned"))
+                try 
                 {
-                    String result = binConvert.unsigned(Long.parseLong(value));
-                    answerField.setText(result);
+                    String value = numberField.getText();
+                    if (cb.getSelectedItem().equals("32 bit unsigned"))
+                    {
+                        String result = binConvert.unsigned(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    else if (cb.getSelectedItem().equals("32 bit sign magnitude number"))
+                    {
+                        String result = binConvert.signMag(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("32 bit ones complement number"))
+                    {
+                        String result = binConvert.onesComp(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("32 bit two's complement number"))
+                    {
+                        String result = binConvert.twosComp(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("BCD number"))
+                    {
+                        String result = binConvert.BCD(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("octal number"))
+                    {
+                        String result = binConvert.octal(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("hexadcecimal number"))
+                    {
+                        String result = binConvert.hexadecimal(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("IEEE Single Precision number"))
+                    {
+                        String result = binConvert.ieeeSingle(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
+                    if (cb.getSelectedItem().equals("IEEE Double Precision number"))
+                    {
+                        String result = binConvert.ieeeDouble(Long.parseLong(value));
+                        answerField.setText(result);
+                    }
                 }
-                else if (cb.getSelectedItem().equals("32 bit sign magnitude number"))
+                catch(Exception e) 
                 {
-                    String result = binConvert.signMag(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("32 bit ones complement number"))
-                {
-                    String result = binConvert.onesComp(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("32 bit two's complement number"))
-                {
-                    String result = binConvert.twosComp(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("BCD number"))
-                {
-                    String result = binConvert.BCD(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("octal number"))
-                {
-                    String result = binConvert.octal(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("hexadcecimal number"))
-                {
-                    String result = binConvert.hexadecimal(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("IEEE Single Precision number"))
-                {
-                    String result = binConvert.ieeeSingle(Long.parseLong(value));
-                    answerField.setText(result);
-                }
-                if (cb.getSelectedItem().equals("IEEE Double Precision number"))
-                {
-                    String result = binConvert.ieeeDouble(Long.parseLong(value));
-                    answerField.setText(result);
+                    JOptionPane.showMessageDialog(null,
+                            "Error: You must enter an integer");
                 }
             }
         });
