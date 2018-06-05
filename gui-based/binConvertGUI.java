@@ -119,7 +119,7 @@ public class binConvertGUI extends JPanel
                         answerField.setText(result);
                     }
                 }
-                catch(Exception e) 
+                catch(NumberFormatException nfe) 
                 {
                     JOptionPane.showMessageDialog(null,
                             "Error: You must enter an integer");
