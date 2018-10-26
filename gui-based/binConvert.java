@@ -1,7 +1,7 @@
 /**
  * This program takes a decimal number and converts it to other number formats.
  * 
- * @author kittfrome
+ * @author Chris Frome
  * @version 05/2018
  */
 public class binConvert
