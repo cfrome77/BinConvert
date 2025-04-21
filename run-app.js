@@ -1,0 +1,2 @@
+cheerpjInit();
+cheerpjRunJar("app.jar");
