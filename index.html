@@ -7,7 +7,13 @@
 </head>
 <body>
   <h1>BinConvert App</h1>
-  <script src="run-app.js"></script>
+  <script>
+    (async function () {
+      await cheerpjInit();
+      cheerpjCreateDisplay(800, 600);
+      await cheerpjRunJar("BinConvert.jar");
+    })();
+  </script>
   </script>
 </body>
 </html>
